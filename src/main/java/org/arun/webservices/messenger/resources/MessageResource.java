@@ -24,4 +24,10 @@ public class MessageResource {
 		return messageService.getAllMessages();
 	}
 	
+	@GET
+	@Path("/{messageId}")
+	@Produces(MediaType.APPLICATION_ATOM_XML)
+	public String test(){
+		return "test";
+	}
 }
