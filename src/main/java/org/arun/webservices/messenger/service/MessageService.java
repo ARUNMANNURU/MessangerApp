@@ -4,22 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.arun.webservices.messenger.database.DatabaseClass;
 import org.arun.webservices.messenger.model.Message;
 
+@XmlRootElement
 public class MessageService {
 	
 	private Map<Long,Message> messages = DatabaseClass.getMessages();
 	
 	public List<Message> getAllMessages(){
-	
 		return new ArrayList<Message>(messages.values()); 
-	
+	}
+	public Message getMessage(long id){
+		return messages.get(id);
 	}
 	public MessageService(){
 		messages.put(1L, new Message(1,"Hello","Arun"));
-		messages.put(2L, new Message(2,"HelloJersey","ArunMannuru"));
-		
+		messages.put(2L, new Message(2,"HelloJersey","ArunMannuru"));		
 	}
 	
 	public Message addMessage(Message message){
